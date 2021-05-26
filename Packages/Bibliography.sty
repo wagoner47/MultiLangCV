@@ -1,3 +1,21 @@
-\usepackage[numbers]{natbib}
-\def\bibsection{}
-\def\bibnumfmt#1{#1.}
+\newcommand*\publistbasestyle{mnras}
+\usepackage[bibstyle=publist,plauthorhandling=highlight,boldyear=false,plauthorfirstinit=true,nameorder=given-family,minnames=3,maxbibnames=3,sorting=ddt]{biblatex}
+\plauthorname[E]{Wagoner}
+\DefineBibliographyStrings{english}{%
+	bathesis  = {B.S.\addabrvspace thesis},
+	phdthesis = {Ph.D.\addabrvspace dissertation},
+}
+\DefineBibliographyStrings{american}{%
+	bathesis  = {B.S.\addabrvspace thesis},
+	phdthesis = {Ph.D.\addabrvspace dissertation},
+}
+\DefineBibliographyStrings{british}{%
+	bathesis  = {BSc\addabrvspace thesis},
+	phdthesis = {PhD\addabrvspace dissertation},
+}
+\DefineBibliographyStrings{french}{%
+	bathesis  = {B.S.\addabrvspace th\`{e}se},
+	phdthesis = {Ph.D.\addabrvspace th\`{e}se},
+	and       = {et},
+}
+\DeclarePrintbibliographyDefaults{heading=subbibliography}
