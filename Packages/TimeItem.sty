@@ -1,10 +1,30 @@
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xparse}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
 \def\timeitemMatterWidth{0.8}
 \def\timeitemTimeWidth{0.2}
 
-\newcommand{\timeitem}[3][]{
-\noindent
-\begin{tabular}{@{}p{\timeitemMatterWidth\textwidth}@{}p{\timeitemTimeWidth\textwidth}@{}}
-\raggedright {\bfseries  #2}\\ #1  & \raggedleft #3 
- \end{tabular}\\[1ex]
 
+\newcommand{\timeitem}[4][]{
+\noindent
+\begin{tabularx}{\textwidth}{@{}L{\timeitemMatterWidth\textwidth}@{}R{\timeitemTimeWidth\textwidth}@{}}
+{\bfseries  #2}\\ \textit{#3}  & #4\\ \hangindent=2em\hangafter=0 {\small #1}
+ \end{tabularx}\\[1ex]
+}
+
+\NewDocumentCommand{\educationitem}{ o m m m !o !d<> !d()}{
+\noindent
+\begin{tabularx}{\textwidth}{@{}L{\timeitemMatterWidth\textwidth}@{}R{\timeitemTimeWidth\textwidth}@{}}
+{\bfseries  #2}\\ \textit{#3}  & #4\IfValueT{#1}{\\ \hangindent=2em\hangafter=0 \small \textit{#1}}\IfValueT{#5}{\\ \hangindent=2em\hangafter=0 \small #5\IfValueT{#6}{\\ \hangindent=2em\hangafter=0 \small #6}\IfValueT{#7}{\\ \hangindent=2em\hangafter=0 \small #7}}
+ \end{tabularx}\\[1ex]
+}
+
+\newcommand{\yearitem}[2]{
+\noindent
+\begin{tabularx}{\textwidth}{@{}L{\timeitemTimeWidth\textwidth}@{}R{\timeitemMatterWidth\textwidth}@{}}
+#1 & #2
+ \end{tabularx}\\[1ex]
 }
